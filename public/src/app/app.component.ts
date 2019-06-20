@@ -7,14 +7,21 @@ import { HttpService } from './http.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  webtitle;
+  title;
   tasks;
   showTask;
+  newTask;
+  update;
 
   constructor(private _httpService: HttpService){ }
 
   ngOnInit(){
-    this.webtitle = "Restful Tasks";
+    this.title = "Restful Tasks";
+    this.newTask = {
+      title: "",
+      description: ""
+    }
+    this.update = false;
     // this.getTasks();
   }
 
@@ -27,7 +34,33 @@ export class AppComponent implements OnInit {
   }
 
   getThisTask(taskId){
+    this.update = true;
     let observable = this._httpService.getOneTask(taskId);
     observable.subscribe(data => this.showTask = data['task'])
+  }
+
+  createTask(){
+    let observable = this._httpService.createTask(this.newTask);
+    observable.subscribe(data => {
+      console.log('==========',data,'===========');
+    });
+    this.newTask = {
+      title: '',
+      description: ''
+    }
+  }
+
+  updateTask(){
+    let observable = this._httpService.updateTask(this.showTask);
+    observable.subscribe(data => {
+      console.log('======== updating', data, '===========')
+    })
+  }
+  deleteTask(taskID){
+    console.log('app.component.ts - taskID param',taskID)
+    let observable = this._httpService.deleteTask(taskID);
+    observable.subscribe(data => {
+      console.log('===== deleting', data, '=========');
+    })
   }
 }

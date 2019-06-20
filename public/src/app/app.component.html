@@ -1,20 +1,38 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <h1>
-    Welcome to {{ webtitle }}!
+    Welcome to {{ title }}!
   </h1>
+  {{ newTask | json }}
+  <form (submit)="createTask()">
+    <label for="title">Title</label>
+    <input [(ngModel)]="newTask.title" name="title">
+    <label for="description">description</label>
+    <input [(ngModel)]="newTask.description" name="description">
+    <input type="submit" value="Create">
+  </form>
   <button (click)="getTasks()">Get all Tasks</button>
   <div *ngIf="getTasks">
-    <div *ngFor ="let task of tasks">
+    <div *ngFor="let task of tasks">
       <h3>{{ task.title }}</h3>
       <p>{{ task.description }}</p>
+      <p>{{ task._id }}</p>
       <button (click)="getThisTask(task._id)">Show Task</button>
+      <button (click)="deleteTask(task._id)">Delete Task</button>
     </div>
   </div>
-  <div *ngIf="getThisTask">
-    <h4>{{ showTask.title }}</h4>
-    <p>{{ showTask.description }}</p>
+  <div *ngIf="update">
+    <form (submit)="updateTask()">
+      {{ showTask | json }}
+      <input type="hidden" [(ngModel)]="showTask._id" name="id">
+      <label for="updateTitle">Title</label>
+      <input [(ngModel)]="showTask.title" name="updateTitle">
+      <label for="updateDescription">Description</label>
+      <input [(ngModel)]="showTask.description" name="updateDescription">
+      <input type="submit" value="Update">
+    </form>
+    <!-- <h4>{{ showTask.title }}</h4>
+    <p>{{ showTask.description }}</p> -->
   </div>
 
-<router-outlet></router-outlet>
-
+  <router-outlet></router-outlet>

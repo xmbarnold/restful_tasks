@@ -18,4 +18,14 @@ export class HttpService {
   getOneTask(taskId){
     return this._http.get(`/api/tasks/${taskId}`);
   }
+  createTask(newTask){
+    return this._http.post('/api/tasks', newTask);
+  }
+  updateTask(task){
+    return this._http.put('/api/tasks', task);
+  }
+  deleteTask(taskID){
+    console.log('http.service.ts - taskID param', taskID)
+    return this._http.delete(`/api/tasks/${taskID}`);
+  }
 }
