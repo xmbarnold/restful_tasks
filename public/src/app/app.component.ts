@@ -7,14 +7,15 @@ import { HttpService } from './http.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'Restful Tasks';
+  webtitle;
   tasks;
   showTask;
 
   constructor(private _httpService: HttpService){ }
 
   ngOnInit(){
-    this.getTasks();
+    this.webtitle = "Restful Tasks";
+    // this.getTasks();
   }
 
   getTasks(){

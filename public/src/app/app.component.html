@@ -1,12 +1,15 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <h1>
-    Welcome to {{ title }}!
+    Welcome to {{ webtitle }}!
   </h1>
-  <div *ngFor ="let task of tasks">
-    <h3>{{ task.title }}</h3>
-    <p>{{ task.description }}</p>
-    <button (click)="getThisTask(task._id)">Show Task</button>
+  <button (click)="getTasks()">Get all Tasks</button>
+  <div *ngIf="getTasks">
+    <div *ngFor ="let task of tasks">
+      <h3>{{ task.title }}</h3>
+      <p>{{ task.description }}</p>
+      <button (click)="getThisTask(task._id)">Show Task</button>
+    </div>
   </div>
   <div *ngIf="getThisTask">
     <h4>{{ showTask.title }}</h4>
