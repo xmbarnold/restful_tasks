@@ -1,0 +1,17 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  <div *ngFor ="let task of tasks">
+    <h3>{{ task.title }}</h3>
+    <p>{{ task.description }}</p>
+    <button (click)="getThisTask(task._id)">Show Task</button>
+  </div>
+  <div *ngIf="getThisTask">
+    <h4>{{ showTask.title }}</h4>
+    <p>{{ showTask.description }}</p>
+  </div>
+
+<router-outlet></router-outlet>
+
