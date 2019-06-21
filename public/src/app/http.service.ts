@@ -25,7 +25,6 @@ export class HttpService {
     return this._http.put('/api/tasks', task);
   }
   deleteTask(taskID){
-    console.log('http.service.ts - taskID param', taskID)
     return this._http.delete(`/api/tasks/${taskID}`);
   }
 }

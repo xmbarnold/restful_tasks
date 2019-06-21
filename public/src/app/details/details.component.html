@@ -1,0 +1,11 @@
+<div *ngIf="update">
+    <form (submit)="updateTask()">
+        {{ showTask | json }}
+        <input type="hidden" [(ngModel)]="showTask._id" name="id">
+        <label for="updateTitle">Title</label>
+        <input [(ngModel)]="showTask.title" name="updateTitle">
+        <label for="updateDescription">Description</label>
+        <input [(ngModel)]="showTask.description" name="updateDescription">
+        <input type="submit" value="Update">
+    </form>
+</div>

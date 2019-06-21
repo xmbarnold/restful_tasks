@@ -14,5 +14,5 @@ module.exports = (app) => {
     app.put('/api/tasks/', (req, res) => tasks.update(req, res));
 
     // api route to delete task by id
-    app.delete('/api/tasks/:taskId', (req, res) => {tasks.delete(req, res); console.log('routes.js - :taskID param', req.params.taskId)});
+    app.delete('/api/tasks/:taskId', (req, res) => tasks.delete(req, res));
 }

@@ -57,7 +57,6 @@ export class AppComponent implements OnInit {
     })
   }
   deleteTask(taskID){
-    console.log('app.component.ts - taskID param',taskID)
     let observable = this._httpService.deleteTask(taskID);
     observable.subscribe(data => {
       console.log('===== deleting', data, '=========');

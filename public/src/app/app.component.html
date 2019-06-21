@@ -17,11 +17,12 @@
       <h3>{{ task.title }}</h3>
       <p>{{ task.description }}</p>
       <p>{{ task._id }}</p>
+      <a [routerLink]=""></a>
       <button (click)="getThisTask(task._id)">Show Task</button>
       <button (click)="deleteTask(task._id)">Delete Task</button>
     </div>
   </div>
-  <div *ngIf="update">
+  <!-- <div *ngIf="update">
     <form (submit)="updateTask()">
       {{ showTask | json }}
       <input type="hidden" [(ngModel)]="showTask._id" name="id">
@@ -31,8 +32,6 @@
       <input [(ngModel)]="showTask.description" name="updateDescription">
       <input type="submit" value="Update">
     </form>
-    <!-- <h4>{{ showTask.title }}</h4>
-    <p>{{ showTask.description }}</p> -->
-  </div>
+  </div> -->
 
   <router-outlet></router-outlet>
